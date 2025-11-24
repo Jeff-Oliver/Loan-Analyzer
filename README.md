@@ -1,4 +1,9 @@
 # Loan Analyzer
+<img src="src\cone.png" alt="Under Construction" width="50">
+<img src="src\cone.png" alt="Under Construction" width="50">
+<img src="src\cone.png" alt="Under Construction" width="50">
+
+## Under Construction!!
 
 ### The final cost of an amortized loan is higher than you may think. Many loan recipients are unaware of the final total repayed and the amount of iterest being paid each period.
 

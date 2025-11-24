@@ -21,8 +21,6 @@
     r = Monthly interest rate (annual rate divided by 12) 
     n = Total number of payments (loan term in years multiplied by 12)
 
-
-
 #### Plug the values into the formula:
 
 $$M = P \frac{r(1+r)^{n}}{(1+r)^{n}-1}$$

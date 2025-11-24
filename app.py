@@ -88,11 +88,11 @@ app.layout = html.Div(children=[
         html.P(f'Loan Type: Fixed Rate Mortgage'),
         html.P(f'Loan Amount: ${loan_amount:,.2f}'),
         html.P(f'Down Payment: ${downpayment:,.2f}'),
-        html.P(f'Principal: ${principal:,.2f}'),
-        html.P(f'Monthly Payment: ${monthly_payment:,.2f}'),
-        html.P(f'Total Payment: ${total_payment:,.2f}'),
+        html.P(f'Loan Principal: ${principal:,.2f}'),
         html.P(f'Interest Rate: {annual_int_rate*100:.2f}%'),
         html.P(f'Loan Term: {loan_term_years} years'),
+        html.P(f'Monthly Payment: ${monthly_payment:,.2f}'),
+        html.P(f'Total Cost: ${total_payment:,.2f}'),
         html.P(f'Total Interest Paid: ${(total_payment - principal):,.2f}')
     ]),
 

@@ -43,27 +43,39 @@ amortization_df['Difference'] = abs(amortization_df['Principal Payment'] - amort
 crossover_point = amortization_df.loc[amortization_df['Difference'].idxmin(), 'Payment Number']
 
 # code for a stacked bar chart
-# fig = px.bar(amortization_df, x='Payment Number', y=['Principal Payment', 'Interest Payment'], 
-#              title='Amortization Schedule', 
-#              labels={'value':'Payment Amount ($)', 'Payment Number':'Payment Number'},
-#              barmode='stack')
-
-fig = px.line(amortization_df, x='Payment Number', y=['Principal Payment', 'Interest Payment'], 
+fig_1 = px.bar(amortization_df, x='Payment Number', y=['Principal Payment', 'Interest Payment'], 
              title='Amortization Schedule', 
-             labels={'value':'Payment Amount ($)', 'Payment Number':'Payment Number'})
-
+             labels={'value':'Payment Amount ($)', 'Payment Number':'Payment Number'},
+             barmode='stack',
+             #bargap=0
+             )
 # Add vertical line at crossover point
-fig.add_vline(x=crossover_point, line_dash="dash", line_color="red", line_width=3,
+fig_1.add_vline(x=crossover_point, line_dash="dash", line_color="red", line_width=3,
               annotation_text=f"Crossover at Payment #{int(crossover_point)}", 
               annotation_position="top right")
 
 # Optional: Add a shape to highlight the bar
-fig.add_vrect(x0=crossover_point-2, x1=crossover_point+2, 
+fig_1.add_vrect(x0=crossover_point-2, x1=crossover_point+2, 
               fillcolor="yellow", opacity=0.3, line_width=0)
 
 # Format y-axis to show full numbers (no abbreviations)
-fig.update_yaxes(tickformat=",.0f")
+fig_1.update_yaxes(tickformat=",.0f")
 
+fig_2 = px.line(amortization_df, x='Payment Number', y=['Principal Payment', 'Interest Payment'], 
+             title='Amortization Schedule', 
+             labels={'value':'Payment Amount ($)', 'Payment Number':'Payment Number'})
+
+# Add vertical line at crossover point
+fig_2.add_vline(x=crossover_point, line_dash="dash", line_color="red", line_width=3,
+              annotation_text=f"Crossover at Payment #{int(crossover_point)}", 
+              annotation_position="top right")
+
+# Optional: Add a shape to highlight the bar
+fig_2.add_vrect(x0=crossover_point-2, x1=crossover_point+2, 
+              fillcolor="yellow", opacity=0.3, line_width=0)
+
+# Format y-axis to show full numbers (no abbreviations)
+fig_2.update_yaxes(tickformat=",.0f")
 app.layout = html.Div(children=[
     html.H1(children='Loan Analyzer'),
 
@@ -80,12 +92,18 @@ app.layout = html.Div(children=[
         html.P(f'Monthly Payment: ${monthly_payment:,.2f}'),
         html.P(f'Total Payment: ${total_payment:,.2f}'),
         html.P(f'Interest Rate: {annual_int_rate*100:.2f}%'),
-        html.P(f'Loan Term: {loan_term_years} years')
+        html.P(f'Loan Term: {loan_term_years} years'),
+        html.P(f'Total Interest Paid: ${(total_payment - principal):,.2f}')
     ]),
 
     dcc.Graph(
         id='amortization-graph',
-        figure=fig
+        figure=fig_1
+    ),
+
+    dcc.Graph(
+        id='amortization-graph-2',
+        figure=fig_2
     )
 ])
 

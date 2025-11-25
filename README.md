@@ -10,7 +10,9 @@
 
 #### This project will allow users to input loan information and see the breakdown of payments over time and the final cost of the loan after repayment
 
-##### Python 3.10 will be used for this project to allow the inclusion of LLMs if desired. Possibly a web agent that can retrieve current interest rates. That might be a fun addition
+#### Inspiration for this project came from the current news (Nov 2025) where lawmakers are considering a 50 year mortgage. I wanted a tool to help visualize the effects of this change. Sure there are tools online, but where's the fun in that!
+
+##### Python 3.10 was used for this project to allow the inclusion of LLMs if desired. Possibly a web agent that can retrieve current interest rates. That might be a fun addition, but likely slower than an api call
 
 ## Loan amortization calculation
 
